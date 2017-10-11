@@ -1,0 +1,143 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs34 \cf0 Floats \
+\
+Take a look at the image, right now is huge because it\'92s set to width 100%. Show on mobile view, that\'92s a little better. \
+\
+What if we want some text to wrap around it? \
+\
+Float left and float right are two options for how we would be able to do that. No float center value. \
+\
+Let\'92s add a float to that image: \
+\
+img \{\
+  border: none;\
+  float: left; \
+\}\
+\
+This doesn\'92t currently do anything because the image is set to be 100%. Need to make it narrower for float to work. \
+\
+img \{\
+  border: none;\
+  float: left; \
+  width: 50%; \
+\}\
+\
+That looks better, but now our caption is above it and the text is next to it. Why is that? \
+\
+Float replaces the normal document flow. \
+\
+Now, let\'92s deal with one thing at a time. First off, we have this issue where images are running into the text itself. We can deal with that if we have some margin set on the image: \
+\
+img \{\
+  border: none;\
+  float: left;\
+  width: 50%;\
+  margin-right: 10px; \
+\}\
+\
+Which will push the text away. \
+\
+Problem: the text is super narrow now. We can make the image a little smaller: \
+\
+img \{\
+  border: none;\
+  float: left;\
+  width: 40%;\
+  margin-right: 10px; \
+\}\
+\
+So how do we get that caption down under the image? A lot of people assume we might just add a float to it: \
+\
+.caption \{\
+  font-family: Georgia, "Times New Roman", serif;\
+  font-style: italic;\
+  text-align: right;\
+  margin-top: 5px;\
+  float: left;\
+ \}\
+\
+Now it sits under the caption, but it\'92s too wide. You might try to fix it by adding a width to it: \
+\
+.caption \{\
+  font-family: Georgia, "Times New Roman", serif;\
+  font-style: italic;\
+  text-align: right;\
+  margin-top: 5px;\
+  float: left;\
+  width: 40%; \
+\}\
+\
+And now it\'92s next to the caption. This is a feature of float \'97 because this is out of the normal document flow, it has enough space to sit there next to the caption. \
+\
+We could fix the behavior of a floated element by adding the \'93clear\'94 command, which basically tells the element to act as though whatever\'92s before it is a non-floated element. So we could do something like this: \
+\
+.caption \{\
+  font-family: Georgia, "Times New Roman", serif;\
+  font-style: italic;\
+  text-align: right;\
+  margin-top: 5px;\
+  clear: both; \
+  float: left;\
+  width: 40%;\
+\}\
+\
+Which forces it under the photo, then we could go and align the text to the left (either with text-align: left; or just getting rid of the text-align command) \
+\
+.caption \{\
+  font-family: Georgia, "Times New Roman", serif;\
+  font-style: italic;\
+  text-align: right;\
+  margin-top: 5px;\
+  clear: both; \
+  float: left;\
+  width: 40%;\
+\}\
+\
+Now that text to the right of it is a little jaggy. So we could add some margin to it, or do some other stuff. \
+\
+I should mention here that because we\'92ve applied the style here to the img tag, any new image that we put in will also be floated: \
+\
+<img src="img/bb-8.jpg" alt="BB-8 peeks around the corner" />\
+\
+So you probably don\'92t want every image that you put on the page to be 40% wide and floated left, so you could add a class of images to this, to float images left or right: \
+\
+    <img class="float_right" src="img/bb-8.jpg" alt="BB-8 peeks around the corner" />\
+\
+And \
+\
+    <img class="float_right" src="img/bb-8.jpg" alt="BB-8 peeks around the corner" />\
+\
+And then you could create a caption with some caption text and add that class to it: \
+\
+    <p class="caption float_right">BB-8 peeks around the corner</p>\
+\
+\
+And then what you run into is that the caption style for floating left is overriding the style for floating right, and then you go down the rabbit hole of adding two caption floats, and your code gets bloated. \
+\
+It would be better to approach this in a different way. We\'92re treating this as two separate components, when what we really want to do is to have a module on the page that\'92s a photo and a caption, and some text runs around it. So let\'92s rethink this a little, and create a modular unit for these two: \
+\
+    <div class="photo_aside">\
+      <img src="img/rey.jpg" alt="A picture of Rey Skywalker" width="100%"/>\
+\
+      <p class="caption">Rey is probably a Skywalker. Deal with it.</p>\
+    </div>\
+\
+I don\'92t have any actual idea what to name this, because I kind of hate descriptive class names, but I\'92m also not sure they\'92re wrong here. Anyhow. \
+\
+Now that this is one unit, we can manipulate just the containing element, and see what happens here: \
+\
+.photo_aside \{\
+  width: 40%;\
+  float: left;\
+  margin-right: 10px; \
+\}\
+\
+And then we could apply that class anywhere on the page to get the photos to display within it: \
+\
+}
