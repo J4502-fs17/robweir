@@ -64,8 +64,6 @@ h1 {
   position: sticky;
   width: 200px;
   top: 20px;
-  right: 60px;
-
 }
 
 /* Fixed position box layout example
@@ -81,3 +79,12 @@ h1 {
 }
 
 */
+
+/*Sticky position box layout example
+
+.box {
+  background-color: #ccc;
+  position: sticky;
+  width: 200px;
+  top: 20px;
+}*/
