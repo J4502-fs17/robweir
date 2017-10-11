@@ -5,7 +5,7 @@
 \margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs34 \cf0 Floats \
+\f0\fs40 \cf0 Floats \
 \
 Take a look at the image, right now is huge because it\'92s set to width 100%. Show on mobile view, that\'92s a little better. \
 \
@@ -208,4 +208,78 @@ And can edit that a little to mess with the positioning:\
 \}\
 \
 {\field{\*\fldinst{HYPERLINK "https://caniuse.com/#search=sticky"}}{\fldrslt https://caniuse.com/#search=sticky}}\
+\
+\
+
+\b Embedding
+\b0 \
+\
+Embedding is super straightforward for social media, less so for video. \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b \cf0 embedding social media:\
+
+\b0 \
+YouTube: Share arrow below video you want to embed \
+\
+Go to TLJ trailer \
+\
+{\field{\*\fldinst{HYPERLINK "file:///Users/weirr/Desktop/robweir/w8d2_class_ex/embed/finished.html"}}{\fldrslt <iframe width="560" height="315" src="https://www.youtube.com/embed/kJ36oNzD2zo" frameborder="0" allowfullscreen></iframe>}}\
+\
+talk about width/height specifically set \
+\
+show Fluid Width Video: https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php\
+\
+So what we need to do is to add another div here as a video wrapper: \
+\
+    <div class="videoWrapper">\
+\
+and then style that in the CSS: \
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 .videoWrapper \{\
+	position: relative;\
+	padding-bottom: 56.25%; /* 16:9 */\
+	padding-top: 25px;\
+	height: 0;\
+\}\
+\
+What this does is set the positioning property to be relative to that div \'97 explain positioning property a little. \
+\
+.videoWrapper iframe \{\
+	position: absolute;\
+	top: 0;\
+	left: 0;\
+	width: 100%;\
+	height: 100%;\
+\}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+absolute is the trickiest position value. absolute behaves like fixed except relative to the nearest positioned ancestor instead of relative to the viewport. If an absolutely-positioned element has no positioned ancestors, it uses the document body, and still moves along with page scrolling. Remember, a "positioned" element is one whose position is anything except static.\
+\
+Twitter: three dots, \'93embed tweet\'94 \
+\
+\
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">This is a great, concise thread about feminism and what happens when men are sexually harassed <a href="https://t.co/VzsY0AjcBO">https://t.co/VzsY0AjcBO</a></p>&mdash; Erin Kissane (@kissane) <a href="https://twitter.com/kissane/status/918165646491316224?ref_src=twsrc%5Etfw">October 11, 2017</a></blockquote>\
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>\
+\
+Embed a timeline: https://support.twitter.com/articles/20170071 and then will go to your own timeline, Setting > Widgets \
+\
+Can go to https://publish.twitter.com/ for more options \
+\
+Do this one to start with: \
+\
+can set an explicit width in the timeline: \
+\
+<a class="twitter-timeline" href="https://twitter.com/robweir" width="300px">\
+\
+and number of tweets to show: \
+\
+data-tweet-limit="3"\
+\
+\
+then try out the button embed: \
+\
+<a href="https://twitter.com/intent/tweet?screen_name=robweir" class="twitter-mention-button" data-show-count="false">Tweet to @robweir</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>\
 }
