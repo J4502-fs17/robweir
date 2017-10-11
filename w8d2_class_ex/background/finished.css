@@ -6,7 +6,7 @@
 
 img {
   border: none;
-  width: 100%; 
+  width: 100%;
 }
 
 .photo_aside {
@@ -26,6 +26,21 @@ h1 {
 #container {
   width: 95%;
   margin: 0 auto;
+  position: relative;
+}
+
+#container::after {
+  content: "";
+  background: url(img/finn.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 .caption {
@@ -59,26 +74,15 @@ h1 {
   text-decoration: underline;
 }
 
-/* Bad photo and caption example text. Bad!
+/*  Container example
 
-img {
-  border: none;
-  float: left;
-  width: 40%;
-  margin-right: 10px;
-}
-
-.float_right {
-  float: right;
-}
-.caption {
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
-  text-align: left;
-  margin-top: 5px;
-  clear: both;
-  float: left;
-  width: 40%;
+#container {
+  width: 95%;
+  margin: 0 auto;
+  background-image: url("img/finn.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.5;
 }
 
 */

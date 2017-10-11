@@ -282,4 +282,61 @@ data-tweet-limit="3"\
 then try out the button embed: \
 \
 <a href="https://twitter.com/intent/tweet?screen_name=robweir" class="twitter-mention-button" data-show-count="false">Tweet to @robweir</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>\
-}
+\
+
+\b Backgrounds \
+\
+
+\b0 You already know how to set the background color of an item: \
+\
+#container \{\
+  width: 95%;\
+  margin: 0 auto;\
+  background-color: lightblue; \
+\}\
+\
+What if you want to set an image as the background? \
+\
+  background-image: url("img/finn.jpg"); \
+\
+Obviously don\'92t use that actual image. \
+\
+The image will repeat by default (keep scrolling!) \
+\
+To make it not repeat, use \
+\
+What if we want it to not scroll with the rest of the body, but be fixed? \
+\
+  background-attachment: fixed;\
+\
+Now, what if we want to make that background lighter, or work differently? We can try to use an \'93opacity\'94 property on the container: \
+\
+#container \{\
+	opacity: 0.5; \
+\}\
+\
+The problem is, that makes the whole container opaque. \
+\
+We can use this little pseudo-class trick to make the background show up: \
+\
+#container \{\
+  width: 95%;\
+  margin: 0 auto;\
+  position: relative; \
+\}\
+\
+#container::after \{\
+  content: "";\
+  background: url(img/finn.jpg);\
+  opacity: 0.5;\
+  top: 0;\
+  left: 0;\
+  bottom: 0;\
+  right: 0;\
+  position: absolute;\
+  z-index: -1;\
+\}\
+\
+And then we can add in our old commands: \
+\
+And there\'92s one more thing I want to show, which is the rgba color property. This will let you add some transparency to something that\'92s already got color on it. }
