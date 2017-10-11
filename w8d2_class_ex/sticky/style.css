@@ -4,9 +4,16 @@
   color: red;
 }*/
 
+.box {
+  position: sticky;
+  background-color: #ccc;
+  width: 200px;
+  top: 20px;
+}
+
 img {
   border: none;
-  width: 100%; 
+  width: 100%;
 }
 
 p {

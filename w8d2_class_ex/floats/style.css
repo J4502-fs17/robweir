@@ -6,7 +6,13 @@
 
 img {
   border: none;
-  width: 100%; 
+  width: 100%;
+}
+
+.photo_aside {
+  width: 47%;
+  float: left;
+  margin-right: 10px;
 }
 
 p {
@@ -25,7 +31,7 @@ h1 {
 .caption {
   font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
-  text-align: right;
+  /*text-align: left;*/
   margin-top: 5px;
 }
 
