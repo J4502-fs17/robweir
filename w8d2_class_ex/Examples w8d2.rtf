@@ -156,5 +156,35 @@ The position property in CSS is super confusing, but we can use that to make som
 \
     <p class="box">This is some contnet that I want to stay in a fixed position on the page.</p>\
 \
+So I can style that class of \'93box\'94 a few different ways: \
 \
-}
+.box \{\
+  position: fixed;\
+\}\
+\
+This fixes it in place. We can then add a width to it: \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0   width: 200px;\
+\
+And some attributes that refer to its position relative to the spot on the page where you want it to be: \
+\
+  top: 100px;\
+  right: 60px;\
+\
+And let\'92s add a background color to it, so we can see it relative to the rest of the page: \
+\
+background-color: #ccc; \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+If I wanted it to stay at the top of the page, I would assume I could set it to top: 0px; \
+\
+The issue is that there\'92s always some margin around the body element on a page. The old trick to deal with this is using negative margin: \
+\
+margin-top: -10px; \
+\
+And we can balance that with some padding at the top: \
+\
+Padding-top: 10px; \
+\
+Now what if I }
