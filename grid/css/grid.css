@@ -1,0 +1,6 @@
+/*Styles go here*/
+
+.grid {
+  max-width: 800px;
+  display: grid; 
+}
