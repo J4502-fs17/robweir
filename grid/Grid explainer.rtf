@@ -92,4 +92,98 @@ Apparently the name of these properties is changing from grid-gap to just gap, c
 \b 02-Positioning\
 \
 
-\b0 Asfdljasdflj}
+\b0 So here, our index.html has the same layout we saw before. You can see the logic of the grid rows \'97 each is taking up 1fr of the available space, and because we\'92ve indicated 1fr of space three times, we have three columns on the page. \
+\
+We can also see that we currently have four column lines and three row lines that we can use for alignment. \
+\
+Let\'92s alter this code a bit to add in the column and row position for individual items. Keep in mind that each card has its own class. \
+\
+.card1 \{\
+  grid-column: 1 / 3;\
+  grid-row: 1;\
+\}\
+\
+The command grid-column 1 / 3; has the following logic: \
+\
+* start the item at grid column 1 \
+* end it at grid column 3 \
+\
+And grid-row: 1; has the following logic: \
+\
+* start the item at grid-row 1\
+\
+Carry this on with each of these commands: \
+\
+.card2 \{\
+  grid-column: 3;\
+  grid-row: 1;\
+\}\
+\
+.card3 \{\
+  grid-column: 1;\
+  grid-row: 2 / 4;\
+\}\
+\
+.card4 \{\
+  grid-column: 2 / 4;\
+  grid-row: 2;\
+\}\
+\
+.card5 \{\
+  grid-column: 2 / 4;\
+  grid-row: 3;\
+\}\
+\
+We can also use this to add empty space within our layouts: \
+\
+.card3 \{\
+  grid-column: 1;\
+  grid-row: 3 / 4;\
+\}\
+\
+Or \
+\
+.card4 \{\
+  grid-column: 3 / 4;\
+  grid-row: 2;\
+\}\
+\
+No other content will flow into that area that we\'92ve left vacant. \
+\
+The second way to do positioning is with the named areas trick, in which we give each card a name within the grid-area property.\
+\
+.card1 \{ grid-area: a; \}\
+.card2 \{ grid-area: b; \}\
+.card3 \{ grid-area: c; \}\
+.card4 \{ grid-area: d; \}\
+.card5 \{ grid-area: e; \}\
+\
+Then, the grid-template-areas property takes a set of values that physically describe the layout of the cards: \
+\
+.cards \{\
+        margin: 0;\
+        padding: 0;\
+        list-style: none;\
+        display: grid;\
+        grid-template-columns: 1fr 1fr 1fr;\
+        grid-gap: 20px;\
+     
+\b    grid-template-areas:\
+            "a a b"\
+            ". d d"\
+            "c e e";\
+
+\b0     \}\
+\
+Note the syntax: the command starts after a colon, each row is inside a set of quote marks, and there\'92s a semicolon at the very end. A dot means that nothing would be shown in that area. \
+\
+You can change up the areas as long as they\'92re contiguous either vertically or horizontally (no L-shaped layout). Try out: \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b \cf0 "a a b"\
+\'93d d .\'94\
+"c e .\'94
+\b0 \
+\
+or some other combination. }
