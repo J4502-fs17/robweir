@@ -7,6 +7,89 @@
 
 \f0\fs36 \cf0 CSS grid basics \
 \
-Look inside first example, you have CSS and index.html \
+Look inside first example, you have CSS and index.html, as well as finished styles. \
 \
-}
+
+\b 01-Basics\
+
+\b0 \
+We\'92re going to open index.html in a browser (use Firefox Developer Edition) and we see that these are just stacked list items. \
+\
+Look at the index.html and see that these are list items, inside an unordered list tag with a class of \'93cards.\'94 Remember that direct children of a container with the grid property set on it become grid items. \
+\
+We\'92ll set the grid property on the item that has a class of \'93cards\'94: \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 .cards \{\
+    margin: 0 -10px;\
+    padding: 0;\
+    list-style: none;\
+
+\b     display: grid;\
+
+\b0 \}\
+\
+Next we need to define our grid columns. We can do this by adding in: \
+\
+.cards \{\
+    margin: 0 -10px;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+
+\b     grid-template-columns: 1fr 1fr 1fr;\
+
+\b0 \}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+This will give us three equal columns, each taking up 1 fraction (1fr) of the available space. We can tweak this around for fun: \
+\
+1fr 2fr 1fr \
+\
+Or use explicit width values:\
+\
+200px 2fr 200px \
+\
+Right now, we have this weird margin and padding command at the top of the page. That\'92s there because these items are actually list items, so we need to tweak them around to get the sizing to work out (show grid example in FF)\
+\
+There\'92s a different way to set margins inside of the Grid spec, which is called grid-gap: \
+\
+grid-gap: 20px; \
+\
+.cards \{\
+    list-style: none;\
+    display: grid;\
+    grid-template-columns: 1fr 1fr 1fr;\
+
+\b     grid-gap: 20px; \
+
+\b0 \}\
+\
+Grid-gap is shorthand for grid-column-gap and grid-row-gap: \
+\
+    grid-column-gap: 10px;\
+    grid-row-gap: 25px; \
+\
+So you could also set those individually. \
+\
+Apparently the name of these properties is changing from grid-gap to just gap, column-gap and row-gap, so you can include both in your stylesheet for extra backup. \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+    grid-template-columns: 1fr 1fr 1fr;\
+  
+\b   grid-gap: 20px;\
+    gap: 20px; \
+
+\b0     /*grid-column-gap: 10px;\
+    grid-row-gap: 25px; */\
+\}\
+\
+
+\b 02-Positioning\
+\
+
+\b0 Asfdljasdflj}
