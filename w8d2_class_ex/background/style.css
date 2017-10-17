@@ -6,7 +6,7 @@
 
 img {
   border: none;
-  width: 100%; 
+  width: 100%;
 }
 
 p {
@@ -20,6 +20,21 @@ h1 {
 #container {
   width: 95%;
   margin: 0 auto;
+  position: relative;
+}
+
+#container::after {
+  content: "";
+  background: url(img/finn.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 .caption {
@@ -40,7 +55,7 @@ h1 {
 #nav a:link {
   display: block;
   color: #ffffff;
-  background-color: #98bf21;
+  background-color: rgba(152, 191, 33, 0.5);
   font-weight: bold;
   text-align: center;
   font-family: Helvetica, Arial, sans-serif;
@@ -52,3 +67,10 @@ h1 {
   background-color: #7a991a;
   text-decoration: underline;
 }
+
+
+
+
+
+
+{}
