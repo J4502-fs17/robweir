@@ -179,9 +179,8 @@ Note the syntax: the command starts after a colon, each row is inside a set of q
 \
 You can change up the areas as long as they\'92re contiguous either vertically or horizontally (no L-shaped layout). Try out: \
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\b \cf0 "a a b"\
+\b "a a b"\
 \'93d d .\'94\
 "c e .\'94
 \b0 \
@@ -190,4 +189,64 @@ or some other combination. \
 \
 Note that one thing we can do here is to take the content out of the normal document flow, like we did in Flexbox. This is problematic for accessibility, as you may inadvertently take advantage of the spec to change the order of the content and make it appear out of place or nonsensical for people using screen readers. \
 \
-}
+
+\b 3 \'97 Aligning Items \
+\
+
+\b0 Alignment in Grid layout works similarly as it does in Flexbox. We\'92re starting here with a layout that\'92s similar to what we did just now, where we have named items that are aligned using the grid-template-areas command. \
+\
+By default, the area that those items occupy is the whole area available to them \'97 put another way, they\'92re going to fill the available space in the grid layout, accounting for the grid-gap area that we\'92ve left for them. \
+\
+To be technical, they\'92re using the default property for the \'93align-items\'94 command, which is \'93stretch.\'94 So we can use that align-items command to make the background not stretch, but pull back to only cover a portion of the area: \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+    grid-template-columns: repeat(4, 1fr);\
+    grid-template-rows: repeat(3, 100px);\
+    grid-template-areas:\
+        "a a a b"\
+        "a a a b"\
+        "c d d d";\
+    grid-gap: 20px;\
+
+\b     align-items: start;
+\b0 \
+\}\
+\
+Note that this 
+\b doesn\'92t alter the grid structure
+\b0 , just any background or area you set on it. You don\'92t magically have more space to insert items into. \
+\
+I can add some more content to item 1 to demonstrate how the background area works (c&p from finished) \
+\
+You can use the same commands as we use in Flexbox to alter the alignment of the other grid items, too: \
+\
+.two \{\
+    grid-area: b;\
+
+\b     align-self: stretch;\
+
+\b0 \}\
+\
+.three \{\
+    grid-area: c;\
+
+\b     align-self: flex-end;\
+
+\b0 \}\
+\
+.four \{\
+    grid-area: d;\
+
+\b     align-self: center; \
+
+\b0 \}\
+\
+
+\b 4 \'97 Justifying Items 
+\b0 \
+\
+fdsjl}
