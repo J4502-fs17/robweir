@@ -275,4 +275,106 @@ You can also try other values for justifying items \'97 start, center, or stretc
     justify-self: center;\
 \}\
 \
-Keep in mind, justify-items is for setting justification properties on multiple items (it would be applied to the parent container), while justify-self is meant for setting properties on individual items. They are both new enough they aren\'92t yet defined inside Atom, so }
+Keep in mind, justify-items is for setting justification properties on multiple items (it would be applied to the parent container), while justify-self is meant for setting properties on individual items. They are both new enough they aren\'92t yet defined inside Atom, so they won\'92t have auto suggestions for values. \
+\
+(In case you\'92re confused, the justify property is for items aligned along the 
+\b main axis
+\b0  of the layout \'97 in this case, left to right \'97 and the align properties are for items aligned along the 
+\b cross axis
+\b0  of the layout \'97 in this case, top to bottom.) \
+\
+
+\b 5 - Aligining Grid Tracks \
+\
+
+\b0 So in this case, we\'92re going to look at how to align items to grid tracks if they\'92re small enough to do so. \
+\
+Up until now, we\'92ve mostly been defining our grid items using the \'93fr\'94 command, which will allow them to take up a fraction of a given size. This is useful when we want a design to respond to different sizes, but we also can define rows and columns with a number and a percentage size. Let\'92s start by doing that: \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+ 
+\b    grid-template-columns: repeat(4, 15%);\
+    grid-template-rows: repeat(3, 100px);\
+
+\b0     grid-template-areas:\
+        "a a a b"\
+        "a a a b"\
+        "c d d d";\
+    grid-gap: 20px;\
+\}\
+\
+This will give us 4 columns, 15% of the containing element\'92s width each, and 3 rows at 100 pixels high each. If you look at the grid inspector in Firefox, you can see that those items are being drawn from the top left, and take up less than the available space in the container. \
+\
+We can also set an explicit height on the container (right now the height is being drawn to fit the grid items/cards inside it): \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+    grid-template-columns: repeat(4, 15%);\
+    grid-template-rows: repeat(3, 100px);\
+
+\b     height: 50vh;\
+
+\b0     grid-template-areas:\
+        "a a a b"\
+        "a a a b"\
+        "c d d d";\
+    grid-gap: 20px;\
+\}\
+\
+vh is a super useful property to use when you need a thing to take up a portion of the 
+\b v
+\b0 iewport 
+\b h
+\b0 eight. vw does the same thing for viewport width. \
+\
+Now that that\'92s done, we can look at it in the grid examiner in FF, and see that the grid is at the top left of our defined container. Now we can add some justify-items and align-items properties to it. \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+    grid-template-columns: repeat(4, 15%);\
+    grid-template-rows: repeat(3, 100px);\
+    height: 50vh;\
+    grid-template-areas:\
+        "a a a b"\
+        "a a a b"\
+        "c d d d";\
+    grid-gap: 20px;\
+
+\b     align-content: space-between;
+\b0 \
+\}\
+\
+And \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+    grid-template-columns: repeat(4, 15%);\
+    grid-template-rows: repeat(3, 100px);\
+    height: 50vh;\
+    grid-template-areas:\
+        "a a a b"\
+        "a a a b"\
+        "c d d d";\
+    grid-gap: 20px;\
+    align-content: space-between;\
+
+\b     justify-content: space-between;
+\b0 \
+\}\
+\
+We can also try this out with the other values of the align- and justify-content commands: center, space-around, stretch, flex-start and flex-end. \
+\
+6 \'97 }

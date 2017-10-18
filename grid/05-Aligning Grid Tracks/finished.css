@@ -5,14 +5,16 @@
     padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 15%);
     grid-template-rows: repeat(3, 100px);
+    height: 50vh;
     grid-template-areas:
         "a a a b"
         "a a a b"
         "c d d d";
     grid-gap: 20px;
-    justify-items: end; /*also start, center*/
+    align-content: space-between;
+    justify-content: space-between;
 }
 
 .one {
@@ -21,17 +23,14 @@
 
 .two {
     grid-area: b;
-    align-self: stretch;
 }
 
 .three {
     grid-area: c;
-    align-self: flex-end;
 }
 
 .four {
     grid-area: d;
-    justify-self: center;
 }
 
 .cards li {
