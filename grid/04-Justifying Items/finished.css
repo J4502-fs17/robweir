@@ -1,7 +1,5 @@
 /*Styles go here*/
 
-/*Styles go here*/
-
 .cards {
     margin: 0;
     padding: 0;
@@ -14,7 +12,7 @@
         "a a a b"
         "c d d d";
     grid-gap: 20px;
-    align-items: start;
+    justify-items: end; /*also start, center*/
 }
 
 .one {
@@ -33,7 +31,7 @@
 
 .four {
     grid-area: d;
-    align-self: center;
+    justify-self: center;
 }
 
 .cards li {

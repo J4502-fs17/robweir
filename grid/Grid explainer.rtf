@@ -249,4 +249,30 @@ You can use the same commands as we use in Flexbox to alter the alignment of the
 \b 4 \'97 Justifying Items 
 \b0 \
 \
-fdsjl}
+So we\'92ll start with the same example as last time, with items put on the grid and the default (stretch) property applied. We can use the justify-items property to justify them to various spots: \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+    grid-template-columns: repeat(4, 1fr);\
+    grid-template-rows: repeat(3, 100px);\
+    grid-template-areas:\
+        "a a a b"\
+        "a a a b"\
+        "c d d d";\
+    grid-gap: 20px;\
+
+\b     justify-items: end;
+\b0 \
+\}\
+\
+You can also try other values for justifying items \'97 start, center, or stretch (which is of course the default). You can also use the justify-self property to apply these to individual items as well: \
+\
+.four \{\
+    grid-area: d;\
+    justify-self: center;\
+\}\
+\
+Keep in mind, justify-items is for setting justification properties on multiple items (it would be applied to the parent container), while justify-self is meant for setting properties on individual items. They are both new enough they aren\'92t yet defined inside Atom, so }
