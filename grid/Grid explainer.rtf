@@ -377,4 +377,34 @@ And \
 \
 We can also try this out with the other values of the align- and justify-content commands: center, space-around, stretch, flex-start and flex-end. \
 \
-6 \'97 }
+6 \'97 Auto Fill Grid \
+\
+The command we\'92ve used to create grid columns, grid-template-columns, lets us define a number of columns on the grid and their sizing (relative or absolute). It doesn\'92t, however, offer responsive sizing \'97 if the containing element just gets too small, so do the grid items (demonstrate this with browser). \
+\
+To automatically fill the space inside a grid container with elements that can reflow as the context changes, we can use the repeat command: \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+
+\b     grid-template-columns: repeat(auto-fill, 200px);\
+
+\b0 \}\
+\
+In this case, what the logic is telling the columns to do is to put as many 200px columns inside that space as possible. The issue you see is that the containing element is larger, which leaves gaps at the end of the sets of columns.\
+\
+If we don\'92t want to have those gaps, we can use a minmax() command to fix that: \
+\
+.cards \{\
+    margin: 0;\
+    padding: 0;\
+    list-style: none;\
+    display: grid;\
+
+\b     grid-template-columns: repeat(auto-fill, minmax(200px,1fr));\
+
+\b0 \}\
+\
+Make sure those parentheses all balance. What you\'92re telling the system to do is to automatically fill your template columns (auto-fill) with columns that are a minimum of 200px and a maximum of 1fr of the width available. As you resize the window, you can see that the cards start at 233px wide, and get smaller }
