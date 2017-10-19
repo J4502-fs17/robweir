@@ -410,4 +410,75 @@ If we don\'92t want to have those gaps, we can use a minmax() command to fix tha
 Make sure those parentheses all balance. What you\'92re telling the system to do is to automatically fill your template columns (auto-fill) with columns that are a minimum of 200px and a maximum of 1fr of the width available. As you resize the window, you can see that the cards start at 233px wide, and get smaller as their containing element changes until they collapse into just one column. \
 \
 
-\b 7 \'97 Using FR units for layout }
+\b 7 \'97 Using FR units for layout \
+\
+
+\b0 We can keep grid items in proportion to one another by using fr units (fractional units) in our designs, and even mix fractional and fixed units within our designs. Let\'92s start with a three-column layout with mixed-width columns. \
+\
+The html is a little different than what we\'92ve been using before: we have a main article tag with a class of \'93content\'94 and two divs with a class of \'93sidebar1\'94 and \'93sidebar2.\'94 We\'92ll use that to style them. \
+\
+Over in the stylesheet, you\'92ll see something new. It\'92s worth pausing for a minute to explain how this selector works: \
+\
+.example > * \{\
+    background-color: #f1b82d;\
+    border: 1px solid #ccc;\
+    border-radius: 5px;\
+    padding: 10px;\
+\}\
+\
+What that does is to combine the child selector tool in CSS, the >, which we haven\'92t seen yet, with the \'93all\'94 selector tool in CSS, the asterisk, to mean that all children of .example will have the same styles set on them. Nothing to worry about now, just in case you\'92re curious. You\'92ll also see that .example is set to display:grid, which isn\'92t currently doing anything because we don\'92t have any other styles set on it. \
+\
+To mix up fractional sizing, we can do this: \
+\
+.example \{\
+    display: grid;\
+
+\b     grid-template-columns: 1fr 4fr 1fr;\
+    grid-gap: 20px;\
+
+\b0 \}\
+\
+This essentially creates a six-column grid where two items are taking up 1/6th of the room available, and one item is taking up 4/6 (or 2/3) of the room, accounting for the grid-gap units. \
+\
+The problem with this is that the grid lays out in the order the items are in the html document order, so our main content area (which comes first in the html) is 1fr and the sidebar, supposed to be 1fr, is 4fr units. \
+\
+So we can fix this a couple different ways \'97 we can use the grid tools to have the content draw itself into the layout we want, or we could move a sidebar ahead of the main content in the html layout. \
+\
+There are a few questions to ask ourselves at this point: \
+\
+What is the logical order in which to read the content? If the sidebar is for example an introduction, author info, background information, then maybe it makes sense to run it before the main content area in the html, so that if the css breaks or someone can\'92t see the design, you read it first. On the other hand, if the main content area is the most important thing and the sidebar is, for example, links, then you might want the sidebars to stay in that order in the html. \
+\
+In this case, for the sake of the example, let\'92s show you how to use the Grid tools to move the content around. In flexbox, we could do this with the order property, but in Grid we can use the grid-column and grid-row commands instead: \
+\
+.content \{\
+    grid-column: 2;\
+\}\
+\
+This will put the main content area where we want it, but push the second sidebar down to another line (because the content is being drawn on the existing grid \'97 show this in Firefox DE) \
+\
+.sidebar1 \{\
+    grid-column: 1;\
+    grid-row: 1;\
+\}\
+\
+This plops all our stuff in place, but let\'92s go ahead and explicitly tell the system how to arrange sidebar2: \
+\
+.sidebar2 \{\
+    grid-column: 3;\
+    grid-row: 1;\
+\}\
+\
+Now we have a nice design where each item is flexible. \
+\
+We can change just a little bit of code to attain what used to be called the \'93Holy Grail\'94 layout, where two fixed-width sidebars span a flexible center container. In this case, we\'92ll just change the grid-template-columns code a touch to make the first and last columns fixed width: \
+\
+.example \{\
+    display: grid;\
+    /*grid-template-columns: 1fr 4fr 1fr;*/\
+
+\b     grid-template-columns: 150px 1fr 150px;\
+
+\b0     grid-gap: 20px;\
+\}\
+\
+}
