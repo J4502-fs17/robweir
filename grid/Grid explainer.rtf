@@ -502,5 +502,39 @@ Looking at this example, we have \'93auto\'94 set for the central column. If you
     height: 300px;\
 \}\
 \
+9 \'97 Auto Minmax \
 
-\b0 You can also use \'93auto\'94 with the minmax command to create tracks that are a minimum height or width, but can expand if you add more content. }
+\b0 \
+You can also use \'93auto\'94 with the minmax command to create tracks that are a minimum height or width, but can expand if you add more content. \
+\
+This example starts with six items in three columns and two rows. The command \
+\
+grid-auto-rows: minmax(150px, auto); \
+\
+means that the minimum size of the rows will be 150px, and the maximum will be set to the size of the content inside it. \
+\
+If we use some commands to set where those cards go:\
+\
+
+\b .card1 \{\
+   grid-column: 1;\
+   grid-row: 1;\
+\}\
+\
+.card2 \{\
+   grid-column: 2 / 4;\
+   grid-row: 1 / 3;\
+\}
+\b0 \
+\
+We see that an area that spans two rows will become 320px high (150 * 2, plus the 20 px grid-gap area).\
+\
+If we add more content to one of those cards, the design adapts, and the second card becomes even larger: \
+\
+
+\b <p>Some extra content will cause this track to become taller than the 150 pixels.</p>\
+\
+
+\b0 And the rest of the layout adjusts. So you can see how this becomes a neat way to lay things out. 
+\b \
+}
