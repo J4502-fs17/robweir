@@ -48,22 +48,24 @@ aside p {
 .byline {
     font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
     font-size: 0.7em;
+    margin-top: 0.5em;
     margin-bottom: 0;
+    line-height: normal;
 }
 
 .dateline {
     font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
     font-size: 0.7em;
     color: #aaa;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
+    line-height: normal;
 }
 
 .pullquote {
   font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
   font-size: 1.25em;
   font-style: italic;
-  line-height: 1.25; 
+  line-height: 1.25;
 }
 
 nav ul {

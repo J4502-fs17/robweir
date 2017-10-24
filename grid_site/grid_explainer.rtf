@@ -72,5 +72,93 @@ article:last-of-type \{\
 \
 The last-of-type class gets rid of the border on the last article, which is useful when you might have several articles there. \
 \
-Let\'92s go ahead and start messing with some fun stuff as we make this page a little wider. \
+Let\'92s go ahead and start messing with some other stuff as we make this page a little wider. We\'92ll start by changing the navigation from a column to a row at 450px. You\'92ll remember how the media query syntax worked from class last week:  \
+\
+@media screen and (min-width: 450px) \{\
+\
+ \}\
+\
+Inside this, we write normal style rules like so: \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0    nav ul \{\
+        flex-flow: row;\
+    \}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \}\
+\
+So now our items are in a row. We can space them out a bit using the justify-content command: \
+\
+    nav ul \{\
+        flex-flow: row;\
+        justify-content: space-between;\
+    \}\
+\
+Then when this gets slightly bigger still, let\'92s set a slightly different width on our container, to keep the line lengths readable, and let our author images show again. We\'92ll float them inside the articles. \
+\
+@media screen and (min-width: 600px) \{\
+\
+    #container \{\
+        width: 80%;\
+    \}\
+\}\
+\
+And within that media query, let\'92s go ahead and make the image visible: \
+\
+    .authorbox img \{\
+      display: block;\
+    \}\
+\
+We\'92ll also set the width on it to be 100%, which in this case is the width of its containing element: \
+\
+    .authorbox img \{\
+      display: block;\
+
+\b       width: 100%;\
+
+\b0     \}\
+\
+And let\'92s add a little margin to the top of that image, to move it a touch away from the dateline: \
+\
+\
+\
+And then we can set the width of the author box itself to be a percentage of its container: \
+\
+    .authorbox \{\
+      width: 25%;\
+    \}\
+\
+Now that that\'92s all set, we can make the author box and image float inside the article by using the float command: \
+\
+    .authorbox \{\
+      width: 25%;\
+    
+\b   float: left;\
+    
+\b0 \}\
+\
+If we do that, we probably also need to add some margin to it: \
+\
+    .authorbox \{\
+      width: 25%;\
+      float: left;\
+     
+\b  margin-right: 20px;\
+
+\b0     \}\
+\
+And then the last thing we want to do is to make it so that the image doesn\'92t get too large. We can set a max-width like so: \
+\
+    .authorbox \{\
+      width: 25%;\
+
+\b       max-width: 200px; \
+
+\b0       float: left;\
+      margin-right: 20px;\
+    \}\
+\
+And, as a final tweak, let\'92s add a touch of margin before and after the image, to move it a bit away from the dateline: \
+\
 }

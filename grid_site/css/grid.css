@@ -14,7 +14,7 @@ nav ul {
 }
 
 .pullquote {
-  display: none; 
+  display: none;
 }
 
 article {
@@ -24,4 +24,33 @@ article {
 
 article:last-of-type {
   border-bottom: none;
+}
+
+@media screen and (min-width: 450px) {
+
+    nav ul {
+        flex-flow: row;
+        justify-content: space-between;
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+
+    #container {
+        width: 80%;
+    }
+
+    .authorbox img {
+      display: block;
+      width: 100%;
+      margin-top: 0.5em; 
+    }
+
+    .authorbox {
+      width: 25%;
+      max-width: 200px;
+      float: left;
+      margin-right: 20px;
+    }
 }
