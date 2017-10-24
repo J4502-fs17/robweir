@@ -4,4 +4,9 @@
 
 .container {
 	display: flex;
+	height: 50vh;
+}
+
+.item {
+	margin: auto;
 }

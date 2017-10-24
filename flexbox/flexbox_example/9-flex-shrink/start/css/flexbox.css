@@ -4,4 +4,16 @@
 
 .container {
 	display: flex;
+	height: 300px;
+	flex-wrap: nowrap;
+}
+
+.item {
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 500px;
+}
+
+.item-2 {
+	flex-shrink: 3; 
 }
