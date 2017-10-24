@@ -35,7 +35,7 @@ p {
 
 aside p {
     font-size: 0.8em;
-    line-height: 1.2em; 
+    line-height: 1.2em;
 }
 
 .caption {
@@ -44,16 +44,21 @@ aside p {
     margin-top: 0;
 }
 
+.byline {
+    font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
+    font-size: 0.7em;
+    margin-bottom: 0;
+}
+
 .dateline {
     font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
     font-size: 0.7em;
     color: #aaa;
+    margin-top: 0; 
     margin-bottom: 0;
 }
 
 nav ul {
-    display: flex;
-    justify-content: space-between;
     padding: 0;
     margin: 0;
 }
@@ -70,10 +75,8 @@ nav ul li a {
     margin-bottom: 1em;
 }
 
-#bar {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+header {
+    margin-top: 1.5em;
     margin-bottom: 0.7em;
     border-bottom: 1px solid #ccc;
 }
@@ -101,7 +104,7 @@ a:hover {
     color: #bd5532;
 }
 
-@media screen and (min-width: 600px) {
+/*@media screen and (min-width: 600px) {
 
     #container {
         width: 80%;
@@ -127,4 +130,4 @@ a:hover {
     nav ul li {
         margin-left: 1.8em;
     }
-}
+}*/
