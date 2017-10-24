@@ -42,6 +42,7 @@ aside p {
     font-size: 0.7em;
     text-align: right;
     margin-top: 0;
+    font-style: italic;
 }
 
 .byline {
@@ -54,8 +55,15 @@ aside p {
     font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
     font-size: 0.7em;
     color: #aaa;
-    margin-top: 0; 
+    margin-top: 0;
     margin-bottom: 0;
+}
+
+.pullquote {
+  font-family: "Merriweather Sans", Helvetica, Arial, sans-serif;
+  font-size: 1.25em;
+  font-style: italic;
+  line-height: 1.25; 
 }
 
 nav ul {
@@ -75,7 +83,7 @@ nav ul li a {
     margin-bottom: 1em;
 }
 
-header {
+.title {
     margin-top: 1.5em;
     margin-bottom: 0.7em;
     border-bottom: 1px solid #ccc;
@@ -103,6 +111,7 @@ a {
 a:hover {
     color: #bd5532;
 }
+
 
 /*@media screen and (min-width: 600px) {
 
