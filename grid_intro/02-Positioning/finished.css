@@ -42,8 +42,8 @@ This is the finished code for the named areas example:
     }
 
     .cards li {
-        background-color: #e5dbff;
-        border: 1px solid #d0bfff;
+        background-color: #f1b82d;
+        border: 1px solid #ccc;
         padding: 10px;
         border-radius: 5px;
     }
