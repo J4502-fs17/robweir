@@ -44,15 +44,13 @@ A different way to go about this is to use the display property in css: \
 .authorbox img \{\
    display: none;\
 \}\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 \
+\
 And let\'92s do the same with the pull quotes: \
 \
 .pullquote \{\
   display: none; \
 \}\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 \
+\
 This gets rid of the image. (Explain why it\'92s usually not a great idea to make the browser load stuff that\'92s hidden, but this is for the example, etc.) \
 \
 Looking down the page, both of the options that we had for author photos are gone, but the two blog posts seem to be bumping into each other. I\'92m going to put a little rule in between them like we have in the header at the top of the page to distinguish them. They\'92re each enclosed in an \'93article\'94 tag, so I can write: \
@@ -80,13 +78,11 @@ Let\'92s go ahead and start messing with some other stuff as we make this page a
 \
 Inside this, we write normal style rules like so: \
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0    nav ul \{\
+   nav ul \{\
         flex-flow: row;\
     \}\
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 \}\
+\}\
 \
 So now our items are in a row. We can space them out a bit using the justify-content command: \
 \
@@ -114,20 +110,24 @@ We\'92ll also set the width on it to be 100%, which in this case is the width of
 \
     .authorbox img \{\
       display: block;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\b       width: 100%;\
+\b \cf0       width: 100%;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\b0     \}\
+\b0 \cf0     \}\
 \
 And let\'92s add a little margin to the top of that image, to move it a touch away from the dateline: \
 \
     .authorbox img \{\
       display: block;\
       width: 100%;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\b       margin-top: 0.5em;\
+\b \cf0       margin-top: 0.5em;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\b0     \}\
+\b0 \cf0     \}\
 \
 \
 And then we can set the width of the author box itself to be a percentage of its container: \
@@ -159,10 +159,86 @@ And then the last thing we want to do is to make it so that the image doesn\'92t
 \
     .authorbox \{\
       width: 25%;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\b       max-width: 200px; \
+\b \cf0       max-width: 200px; \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\b0       float: left;\
+\b0 \cf0       float: left;\
       margin-right: 20px;\
     \}\
+\
+We\'92ll make another tweak when we get to 800px, because those menu items start to look a little stretched out: \
+\
+@media screen and (min-width: 800px) \{\
+    .item1 \{\
+      margin-right: auto;\
+    \
+\}\
+\
+This will leave our \'93home\'94 item to the far left, and spread out our other items to the right. Unfortunately they mush into each other, so we can fix that by setting another rule for the list items to have some margin: \
+\
+@media screen and (min-width: 800px) \{\
+    .item1 \{\
+      margin-right: auto;\
+    \}\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b \cf0     nav ul li \{\
+      margin: 5px;\
+    \}
+\b0 \
+\
+\}\
+\
+Let\'92s also go ahead and show our pullquotes, which will display at the bottom of the articles: \
+\
+@media screen and (min-width: 800px) \{\
+    .item1 \{\
+      margin-right: auto;\
+    \}\
+\
+    nav ul li \{\
+      margin: 5px;\
+    \}\
+\
+
+\b     .pullquote \{\
+      display: block;\
+    \}
+\b0 \
+\
+\}\
+\
+Now that it\'92s getting wider, we can start setting up our grid layout. Let\'92s do this on the article element. \
+\
+@media screen and (min-width:1000px) \{\
+  article \{\
+    display: grid;\
+  \}\
+\
+\}\
+\
+Now that that\'92s done, the page doesn\'92t look too different, except that the float is removed from that author box \'97 that\'92s because the grid setting overrides its previous display of float. (Show in web inspector.) \
+\
+Looking back at our html, we can see that the article element has five child elements in it (can show in web inspector or collapse page to see better) \
+\
+* header (author box)\
+* three sections (the middle one is the photo) \
+* a paragraph with class of pull quote \
+\
+By default, all five of those children of the article tag become Grid items. So if we start laying out a grid: \
+\
+  article \{\
+    display: grid;\
+
+\b     grid-template-columns: 200px 1fr 1fr; \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b0 \cf0   \}\
+\
+We can see that items are flowing into the grid, which is good. This isn\'92t going to be our final layout, but it\'92s a useful way to make sure the grid tools all work. What\'92s also neat about this is that we can see it applies to both the article elements on the page, which means that we can keep our styling rules in one place for how these things should look, and as you add more articles in the future, they will be similar. \
+\
+\
 }

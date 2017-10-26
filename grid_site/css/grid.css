@@ -54,3 +54,26 @@ article:last-of-type {
       margin-right: 20px;
     }
 }
+
+@media screen and (min-width: 800px) {
+    .item1 {
+      margin-right: auto;
+    }
+
+    nav ul li {
+      margin: 5px;
+    }
+
+    .pullquote {
+      display: block;
+    }
+
+}
+
+@media screen and (min-width:1000px) {
+  article {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+  }
+
+}
