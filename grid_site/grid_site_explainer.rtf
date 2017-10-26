@@ -240,5 +240,115 @@ By default, all five of those children of the article tag become Grid items. So 
 \
 We can see that items are flowing into the grid, which is good. This isn\'92t going to be our final layout, but it\'92s a useful way to make sure the grid tools all work. What\'92s also neat about this is that we can see it applies to both the article elements on the page, which means that we can keep our styling rules in one place for how these things should look, and as you add more articles in the future, they will be similar. \
 \
+Let\'92s start by kind of considering the pieces of our layout and how they\'92re organized. The main content (the blog post) is what I want to take up most of the space, but it\'92s actually in two different section elements here. I want the author info next to the main content, and I want to use the image to break up the text. \
 \
-}
+Let\'92s go ahead and fix up the author box first, then we\'92ll deal with the grid areas and their layouts. \
+\
+The reason the author box is so small is it has a width of 25% applied to it, and it\'92s now in an area set to be 200px wide. Because width is an inheritance property, it\'92s getting smaller. Thankfully, we can change that in the css: \
+\
+  .authorbox \{\
+    width: 100%; \
+  \}\
+\
+When we do that, we notice that the content runs right up to the edge of the main bar. We can fix that with the gap property: \
+\
+@media screen and (min-width:1000px) \{\
+  article \{\
+    display: grid;\
+    grid-template-columns: 200px 1fr 1fr;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b \cf0     grid-gap: 20px; \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b0 \cf0   \}\
+\
+I have classes set on all these items: \
+* authorbox\
+* section1\
+* img\
+* section2 \
+* pullquote\
+\
+Given all that, I might start by setting up something like this (c&p the grid area from \'93finished\'94): \
+\
+.authorbox \{\
+    width: 100%;\
+    grid-area: a;\
+  \}\
+\
+  .section1 \{\
+    grid-area: b;\
+  \}\
+\
+  .image \{\
+    grid-area: c;\
+  \}\
+\
+  .section2 \{\
+    grid-area: d;\
+  \}\
+\
+  .pullquote \{\
+    grid-area: e;\
+  \}\
+\
+Now when I go back to the page, those are all mushed together, but we could write something like this: \
+\
+  article \{\
+    display: grid;\
+    grid-template-columns: 200px 1fr 1fr;\
+    grid-gap: 20px;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b \cf0     grid-template-areas:\
+        "a b b"\
+        "c c e"\
+        ". d d";\
+  \}
+\b0 \
+\
+And that looks pretty good. \
+\
+Sidenote: the reason the items aren\'92t lining up with the top of their grid items is that browsers will automatically put in margin on top of items like the initial paragraph and the pull quote. We can fix that with just a touch of code: \
+\
+  .pullquote \{\
+
+\b     margin-top:0;\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b0 \cf0     grid-area: e;\
+  \}\
+\
+And \
+\
+  .section1 p:first-of-type, .section2 p:first-of-type \{\
+    margin-top: 0;\
+  \}\
+\
+Which sets those to 0 without affecting other paragraphs in the section. \
+\
+We could play around with the image and pullquote:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\b \cf0     grid-template-areas:\
+        "a b b"\
+        "c c c\'94\
+        \'93e d d";\
+  \}
+\b0  \
+\
+Or even do something different for super wide screens: \
+\
+@media screen and (min-width:1200px) \{\
+  article \{\
+    display: grid;\
+    grid-template-columns: 200px 1fr 1fr 1fr;\
+    grid-gap: 20px;\
+    grid-template-areas:\
+        "a b b e"\
+        "c c c ."\
+        ". d d .";\
+  \}\
+\}}
